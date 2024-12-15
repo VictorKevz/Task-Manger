@@ -12,7 +12,7 @@ function ThemeSwitch({ isOpen }) {
   return (
     <div className="theme-wrapper">
       {isOpen ? (
-        <div className="open-theme-wrapper">
+        <div className={`open-theme-wrapper ${!isDark && "light-card"}`}>
           <button
             type="button"
             className={`open-theme-btn ${isDark && "active"}`}
@@ -23,15 +23,15 @@ function ThemeSwitch({ isOpen }) {
 
           <button
             type="button"
-            className={`open-theme-btn ${!isDark && "active"}`}
+            className={`open-theme-btn ${!isDark && "active"} ${!isDark && "light-text"} `}
             onClick={() => setDark(false)}
           >
             <LightMode /> Light
           </button>
         </div>
       ) : (
-        <button className="closed-theme--btn" onClick={() => setDark(!isDark)}>
-          {isDark ? <DarkMode /> : <LightMode />}
+        <button className={`closed-theme--btn ${!isDark && "light-text"}`} onClick={() => setDark(!isDark)}>
+          {isDark ? <DarkMode /> : <LightMode className="light-icon" />}
         </button>
       )}
     </div>

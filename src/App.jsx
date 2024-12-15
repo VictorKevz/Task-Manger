@@ -221,6 +221,7 @@ function App() {
     taskWarningModal: false,
     boardWarningModal: false,
     modalData: {},
+
   };
   const [boards, dispatchBoards] = useReducer(boardReducer, initialBoardsData);
   const [currentBoard, setCurrentBoard] = useState(0);

@@ -104,6 +104,35 @@
 }
 
 
+@media (width <= 770px) {
+
+ .aside-wrapper.aside-wrapper{
+  width: fit-content!important;
+    position: relative;
+    min-width: 75px;
+ }
+ .toggle-menu-btn{
+  display: none;
+ }
+}
+@media (width <= 600px) {
+.add-btn-text{
+  display: none;
+}
+.open-taskModal-btn{
+  padding: 0!important;
+  height: 2.5rem!important;
+  width: 2.5rem!important;
+  border-radius: 50%!important;
+}
+.board-header,.board-container{
+  padding: .5rem 1.5rem .5rem 1.5rem!important;
+
+}
+
+}
+
+
 
 
 

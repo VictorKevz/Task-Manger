@@ -25,7 +25,7 @@
 
 }
 .board-name{
-    font-size: 2rem;
+    font-size: clamp(.85rem,2vw,2rem);
     font-weight: 600;
     text-transform: uppercase;
     
@@ -128,4 +128,22 @@
     min-width: max-content;
 
 }
-
+@media (width <=485px){
+  .task-card {
+    width: 200px!important;
+  }
+  .info-actions-wrapper{
+    flex-direction: column!important;
+    padding: .75rem!important;
+  
+  }
+  .options-btn-wrapper {
+    
+    flex-direction: row!important;
+    justify-content: space-between!important;
+    gap: 2rem;
+    align-items: center!important;
+    width: 100%!important;
+    margin-top: .75rem;
+  }
+}

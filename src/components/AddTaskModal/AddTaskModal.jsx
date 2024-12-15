@@ -149,7 +149,7 @@ const updatedBoardObj = {
   return (
     <div className="modal-wrapper">
       <article className={`modal-container ${!isDark && "light-modal"}`}>
-        <header className="modal-header">
+        <header className={`modal-header ${!isDark && "light-text"}`}>
           <h2 className="text-2xl title">
             {host === "add" ? "New Task" : "Edit Task"}
           </h2>
@@ -166,7 +166,7 @@ const updatedBoardObj = {
             <Close className="text-2xl" />
           </button>
         </header>
-        <fieldset className="field">
+        <fieldset className={`field ${!isDark && "light-text"}`}>
           <label htmlFor="taskName" className="board-label">
             Task Title
           </label>
@@ -190,7 +190,7 @@ const updatedBoardObj = {
           )}
         </fieldset>
 
-        <fieldset className="field">
+        <fieldset className={`field ${!isDark && "light-text"}`}>
           <label htmlFor="taskDescription" className="board-label">
             Task Description
           </label>
@@ -223,7 +223,7 @@ const updatedBoardObj = {
          *
          *
          */}
-        <div className="status-wrapper">
+        <div className={`status-wrapper ${!isDark && "light-text"}`}>
           <p className="status-header">
             Status
           </p>
@@ -240,7 +240,7 @@ const updatedBoardObj = {
             )}
           </button>
           {isOpen && (
-            <ul className="status-list">
+            <ul className={`status-list ${!isDark && "light-card"}`}>
               {currentBoardObj?.columns?.map((item) => {
                 const isSelected =
                   host === "add"
@@ -289,7 +289,7 @@ const updatedBoardObj = {
           </button>
           <button
             type="button"
-            className="btn cancel"
+            className={`btn cancel ${!isDark && "light-text"}`}
             onClick={() =>
               dispatchBoards({
                 type: "CLOSE_MODAL",

@@ -45,6 +45,10 @@
   color: var(--soft-cream);
   width: 90%;
 }
+.complete{
+  text-decoration: line-through;
+  color: rgb(138, 135, 135)!important;
+}
 .options-btn-wrapper {
   display: flex;
   flex-direction: column;

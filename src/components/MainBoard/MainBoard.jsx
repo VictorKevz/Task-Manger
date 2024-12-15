@@ -38,7 +38,7 @@ function MainBoard() {
             }
           >
             <AddCircle />
-            Create Task
+            <span className="add-btn-text">Create Task</span>
           </button>
 
           <button

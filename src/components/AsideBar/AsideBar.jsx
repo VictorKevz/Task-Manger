@@ -1,15 +1,30 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { AddCircle, Assignment } from "@mui/icons-material";
 import "./asideBar.css";
 import ThemeSwitch from "../Theme/ThemeSwitch";
-import { DataContext } from "../../App";
+import { AppThemeContext, DataContext } from "../../App";
 import AddBoardModal from "../AddBoardModal/AddBoardModal";
 import openIcon from "../../assets/images/sidebar-open.svg";
 import closeIcon from "../../assets/images/sidebar-close.svg";
 
 function AsideBar() {
   const { boards, dispatchBoards } = useContext(DataContext);
+  const { isDark} = useContext(AppThemeContext);
   const [isOpen, setOpen] = useState(true);
+
+  useEffect(()=>{
+    const handleResize = () => {
+      if (window.innerWidth <= 770) {
+        setOpen(false); 
+      }
+    };
+      window.addEventListener("resize", handleResize);
+      handleResize();
+      
+      return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  },[isOpen])
   return (
     <aside className={`aside-wrapper ${!isOpen && "minimized"}`}>
       <div className="logo-menu-wrapper">
@@ -68,7 +83,7 @@ function AsideBar() {
       <ThemeSwitch isOpen={isOpen} />
       {boards?.boardModal && <AddBoardModal host={"add"} />}
       {boards?.editBoardModal && <AddBoardModal boardTitle ={boards?.modalData?.boardTitle} />}
-      <div className="overlay"></div>
+      <div className={`overlay ${!isDark && "light-overlay"}`}></div>
     </aside>
   );
 }

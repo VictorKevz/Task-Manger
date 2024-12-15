@@ -8,8 +8,9 @@
   align-items: center !important;
   justify-content: center !important;
   z-index: 5 !important;
-  background-color: rgba(2, 19, 4, 0.187) !important;
-  backdrop-filter: blur(3px);
+  background-color: rgba(9, 23, 11, 0.375) !important;
+  backdrop-filter: blur(8px);
+  padding: 0 1rem;
 }
 .overlay {
   position: absolute;
@@ -49,4 +50,7 @@ input {
 .light-modal{
     background-color: #f4fbf5 !important;
     color: var(--dark-gray) !important;
+}
+.light-overlay {
+background: linear-gradient(to bottom, #0405046b, #9dbaa167,#e1e7e267)!important;
 }
