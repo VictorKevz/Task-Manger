@@ -230,7 +230,7 @@ function AddBoardModal({ host, boardTitle }) {
             className="btn create"
             onClick={host === "add" ? handleCreate : handleEdit}
           >
-            {host === "add" ? `Create board` : "Save changes"} <Check />
+            {host === "add" ? `Create board` : "Save changes"} <Check className="check" />
           </button>
           <button
             type="button"

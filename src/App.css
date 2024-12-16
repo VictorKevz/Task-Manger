@@ -1,5 +1,5 @@
 .modal-wrapper {
-  position: fixed !important;
+  position: absolute !important;
   top: 0;
   left: 0;
   width: 100vw !important;
@@ -10,7 +10,7 @@
   z-index: 5 !important;
   background-color: rgba(9, 23, 11, 0.375) !important;
   backdrop-filter: blur(8px);
-  padding: 0 1rem;
+  padding: 1.5rem 1rem;
 }
 .overlay {
   position: absolute;
@@ -56,4 +56,24 @@ input {
 }
 .light-overlay {
 background: linear-gradient(to bottom, #0405046b, #9dbaa167,#e1e7e267)!important;
+}
+
+@media (width <= 455px){
+  .modal-wrapper{
+    padding: 0;
+  }
+  .modal-container{
+    border-radius: 0!important;
+    min-height: 100vh!important;
+    padding: 2rem 1rem!important;
+  }
+  .columns-wrapper{
+    flex-direction: column!important;
+    align-items: flex-start!important;
+    
+  }
+  .column-btn{
+    width:300px!important;
+  }
+
 }

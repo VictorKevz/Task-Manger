@@ -100,7 +100,9 @@ color: var(--crimson);
 .border-error{
     border-color: var(--crimson);
 }
-
+.colum-item{
+    width: 100%!important;  
+}
 .column-btn{
     border: 1px solid var(--slate);
     padding: 0 .5rem;
@@ -109,6 +111,7 @@ color: var(--crimson);
     font-size: 1rem;
     position: relative;
     z-index: 5;
+    /* width: fit-content; */
 }
 .chosen{
     /* background-color: var(--slate); */
