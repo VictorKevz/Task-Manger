@@ -13,18 +13,20 @@
   flex-direction: column;
   align-items: flex-start;
   background-color: var(--gunmetal);
-  border-radius: 0.75rem;
-}
-.task-card-bg {
-  min-height: 80px;
-  width: 100%;
-  border-radius: 0.75rem 0.75rem 0 0;
-  z-index: 2;
+  border-radius: 1rem;
   position: relative;
+  z-index: 2;
 }
+
 .overlay.task-cover {
-  background: #04070a74;
-  border-radius: 0.75rem 0.75rem 0 0;
+  background: #04070a92;
+  border-radius: .8rem;
+  backdrop-filter: blur(5px);
+}
+.light-overlay-card{
+  background-color: #222b37b9!important;
+  border-radius: .9rem;
+
 }
 .info-actions-wrapper {
   margin-top: 0.4rem;
@@ -40,6 +42,7 @@
 .task-title {
   font-weight: 600;
   font-size: 1.25rem;
+  color: #fff;
 }
 .task-parag {
   color: var(--soft-cream);
@@ -47,7 +50,7 @@
 }
 .complete{
   text-decoration: line-through;
-  color: rgb(138, 135, 135)!important;
+  color: rgb(215, 210, 210)!important;
 }
 .options-btn-wrapper {
   display: flex;
@@ -111,4 +114,12 @@
 }
 .tag-item:nth-child(3n) {
   background-color: var(--azure);
+}
+
+/* LIGHT MODE STYLES */
+.light-delete-btn{
+  color: #e85746;
+}
+.light-edit-btn{
+  color: #ffffff;
 }

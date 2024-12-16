@@ -12,7 +12,7 @@ function AddTaskModal({
   columnId,
 }) {
   const { boards, dispatchBoards } = useContext(DataContext);
-  const { isDark} = useContext(AppThemeContext);
+  const { isDark } = useContext(AppThemeContext);
   const [editing, setEditing] = useState({
     userTaskTitle: taskName,
     userTaskDescription: taskDescription,
@@ -103,51 +103,62 @@ function AddTaskModal({
       return;
     }
 
-    let taskToMove = null; // To hold the task if it needs to be moved
+    const updatedBoardObj = {
+      ...currentBoardObj,
+      columns: currentBoardObj.columns.map((column) => {
+        // If the column is where the task currently exists
+        if (column.columnTitle === columnTitle) {
+          // Check if the status is changing (i.e., the task is being moved)
+          if (editColumn !== columnTitle) {
+            // If status has changed, remove the task from the current column
+            return {
+              ...column,
+              tasks: column.tasks.filter((task) => task.taskId !== taskId),
+            };
+          }
 
-const updatedBoardObj = {
-  ...currentBoardObj,
-  columns: currentBoardObj.columns.map((column) => {
-    // Handle the current column
-    if (column.columnTitle === columnTitle) {
-      // Remove the task if the status (editColumn) is different
-      const filteredTasks = column.tasks.filter((task) => {
-        if (task.taskId === taskId && editColumn !== columnTitle) {
-          // Task is being moved; modify it and store it in taskToMove
-          taskToMove = {
-            ...task,
-            taskName: editing.userTaskTitle,
-            taskDescription: editing.userTaskDescription,
+          // If only title and description are being edited, update those properties
+          return {
+            ...column,
+            tasks: column.tasks.map((task) =>
+              task.taskId === taskId
+                ? {
+                    ...task,
+                    taskName: editing.userTaskTitle,
+                    taskDescription: editing.userTaskDescription,
+                  }
+                : task
+            ),
           };
-          return false; // Exclude this task
         }
-        return true; // Keep other tasks
-      });
 
-      return {
-        ...column,
-        tasks: filteredTasks, // Update the column with the task removed
-      };
-    }
+        // If the column is where the task is being moved (target column)
+        if (column.columnTitle === editColumn) {
+          // Only add the task to the target column if the status is changing
+          if (editColumn !== columnTitle) {
+            return {
+              ...column,
+              tasks: [
+                ...column.tasks,
+                {
+                  taskId: taskId, // Keep the same task ID
+                  taskName: editing.userTaskTitle, // Updated task name
+                  taskDescription: editing.userTaskDescription, // Updated task description
+                },
+              ],
+            };
+          }
+        }
 
-    // Handle the target column
-    if (column.columnTitle === editColumn) {
-      return {
-        ...column,
-        tasks: taskToMove
-          ? [...column.tasks, taskToMove] // Add the modified task
-          : column.tasks, // If no task to move, do nothing
-      };
-    }
+        // For all other columns, leave them unchanged
+        return column;
+      }),
+    };
 
-    // Leave all other columns unchanged
-    return column;
-  }),
-};
     dispatchBoards({ type: "EDIT_TASK", payload: { updatedBoardObj } });
   };
   return (
-    <div className="modal-wrapper">
+    <div className={`modal-wrapper ${!isDark && "light-modal-wrapper"}`}>
       <article className={`modal-container ${!isDark && "light-modal"}`}>
         <header className={`modal-header ${!isDark && "light-text"}`}>
           <h2 className="text-2xl title">
@@ -224,9 +235,7 @@ const updatedBoardObj = {
          *
          */}
         <div className={`status-wrapper ${!isDark && "light-text"}`}>
-          <p className="status-header">
-            Status
-          </p>
+          <p className="status-header">Status</p>
           <button
             type="button"
             onClick={() => setOpen(!isOpen)}

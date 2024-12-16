@@ -14,19 +14,17 @@ function TaskCard({ task, columnId,columnTitle }) {
   
   const isComplete = columnTitle === "Completed"
   return (
-    <div className={`task-card ${!isDark && "light-card"}`}>
-      <div
-        className="task-card-bg"
-        style={{
-          background: `url(${coverImage}) no-repeat center/cover`,
-        }}
-      >
-        <div className="overlay task-cover"></div>
-      </div>
+    <div 
+    className={`task-card ${!isDark && "light-card"}`}
+    style={{
+      background: `url(${coverImage}) no-repeat center/cover`,
+    }}
+    >
+
       <div className="info-actions-wrapper">
         <div className="card-info">
-          <h3 className={`task-title ${isComplete && "complete"}`}>{task.taskName}</h3>
-          <p className={`task-parag ${!isDark && "light-text"} ${isComplete && "complete"}`}>{task.taskDescription}</p>
+          <h3 className={`task-title ${isComplete && "complete"} ${!isDark && "light-title"}`}>{task.taskName}</h3>
+          <p className={`task-parag ${!isDark && "light-card-text"} ${isComplete && "complete"}`}>{task.taskDescription}</p>
           {/* <ul className="tags-wrapper">
             {task?.tags?.map((tag, i) => (
               <li key={i} className="tag-item">
@@ -37,7 +35,7 @@ function TaskCard({ task, columnId,columnTitle }) {
         </div>
         <div className="options-btn-wrapper">
           <button type="button" 
-          className="edit-task-btn"
+          className={`edit-task-btn ${!isDark && "light-edit-btn"}`}
           onClick={() => dispatchBoards({type:"OPEN_MODAL",
             payload:{
             key:"editTaskModal",
@@ -54,7 +52,7 @@ function TaskCard({ task, columnId,columnTitle }) {
           </button>
           <button
             type="button"
-            className="delete-task-btn"
+            className={`delete-task-btn ${!isDark && "light-delete-btn"}`}
             onClick={() =>
               dispatchBoards({ type: "OPEN_MODAL", payload:{
                 key: "taskWarningModal",
@@ -70,7 +68,7 @@ function TaskCard({ task, columnId,columnTitle }) {
           </button>
         </div>
       </div>
-
+      <div className={`overlay task-cover ${!isDark && "light-overlay.card"}`}></div>
     </div>
   );
 }

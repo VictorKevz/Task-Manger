@@ -1,12 +1,13 @@
 import { Check, Close } from "@mui/icons-material";
 import React, { useContext, useState } from "react";
-import { DataContext } from "../../App";
+import { AppThemeContext, DataContext } from "../../App";
 import { logoData } from "../../logoData";
 import "./addBoardModal.css";
 import uuid from "react-uuid";
 
 function AddBoardModal({ host, boardTitle }) {
   const { boards, dispatchBoards } = useContext(DataContext);
+  const { isDark } = useContext(AppThemeContext);
 
   const currentObj = boards?.boardsList.find(
     (obj) => obj.id === boards?.selectedBoard
@@ -102,9 +103,9 @@ function AddBoardModal({ host, boardTitle }) {
     }
   };
   return (
-    <div className="modal-wrapper">
-      <article className="modal-container">
-        <header className="modal-header">
+    <div className={`modal-wrapper ${!isDark && "light-modal-wrapper"}`}>
+      <article className={`modal-container ${!isDark && "light-modal"}`}>
+        <header className={`modal-header ${!isDark && "light-text"}`}>
           <h2 className="text-2xl title">
             {host === "add" ? "New Board" : "Edit Board"}
           </h2>
@@ -214,7 +215,7 @@ function AddBoardModal({ host, boardTitle }) {
               <li key={i} className="column-item">
                 <button
                   type="button"
-                  className={`column-btn ${isSelected && "chosen"}`}
+                  className={`column-btn ${isSelected && "chosen"} ${!isDark && isSelected && "light-text"}`}
                   onClick={() => updateColumns(column)}
                 >
                   {column}
@@ -233,7 +234,7 @@ function AddBoardModal({ host, boardTitle }) {
           </button>
           <button
             type="button"
-            className="btn cancel"
+            className={`btn cancel ${!isDark && "light-text"}`}
             onClick={() =>
               dispatchBoards({
                 type: "CLOSE_MODAL",

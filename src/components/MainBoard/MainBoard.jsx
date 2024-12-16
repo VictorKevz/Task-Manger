@@ -49,7 +49,7 @@ function MainBoard() {
             <Tune />
           </button>
           {optionsOpen && (
-            <ul className="options-list">
+            <ul className={`options-list ${!isDark && "light-card"}`}>
               <li className="option-item">
                 <button
                   type="button"

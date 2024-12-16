@@ -47,6 +47,9 @@ input {
     color: var(--dark-gray) !important;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.21)!important;   
 }
+.light-modal-wrapper{
+  background-color: #03030394!important;
+}
 .light-modal{
     background-color: #f4fbf5 !important;
     color: var(--dark-gray) !important;
