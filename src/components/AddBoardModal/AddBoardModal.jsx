@@ -21,7 +21,7 @@ function AddBoardModal({ host, boardTitle }) {
   const [selectedColumns, setSelectedColumns] = useState(["To Do"]);
 
   const [editBoard, setEditBoard] = useState(boardTitle);
-  const [editIcon, setEditIcon] = useState(currentObj.icon);
+  const [editIcon, setEditIcon] = useState(currentObj?.icon || null);
   const chosenColumns = currentObj?.columns?.map(
     (column) => column.columnTitle
   );

@@ -54,7 +54,7 @@ const boardReducer = (state, action) => {
         boardsList: state.boardsList.filter((item) => item.id !== action.id),
         boardWarningModal: false,
         selectedBoard:
-          state.boardsList?.length > 0 ? state.boardsList?.[0]?.id : null,
+          state.boardsList?.length > 0 ? state?.boardsList?.[0]?.id : null,
       };
     case "UPDATE_BOARD":
       return {
@@ -173,6 +173,7 @@ function App() {
     */
   }
   const savedBoardData = localStorage.getItem("boards");
+  const savedSelectedBoard = localStorage.getItem("selectedBoard");
   const initialBoardsData = {
     boardsList: savedBoardData
       ? JSON.parse(savedBoardData)
@@ -209,7 +210,7 @@ function App() {
             ],
           },
         ],
-    selectedBoard: 0,
+    selectedBoard: savedSelectedBoard ? JSON.parse(savedSelectedBoard) : 0,
     boardModal: false,
     userBoardName: "",
     taskModal: false,
@@ -228,7 +229,8 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("boards", JSON.stringify(boards?.boardsList));
-  }, [boards?.boardsList]);
+    localStorage.setItem("selectedBoard", JSON.stringify(boards?.selectedBoard));
+  }, [boards?.boardsList,boards?.selectedBoard]);
 
   return (
     <AppThemeContext.Provider value={{ isDark, setDark }}>

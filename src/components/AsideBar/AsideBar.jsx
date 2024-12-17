@@ -71,7 +71,7 @@ function AsideBar() {
       </ul>
       <button
         type="button"
-        className="add-board-btn"
+        className={`add-board-btn ${!isOpen && "closed-add"}`}
         onClick={() =>
           dispatchBoards({ type: "OPEN_MODAL", payload:{key: "boardModal"} })
         }

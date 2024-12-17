@@ -294,7 +294,7 @@ function AddTaskModal({
             className="btn create"
             onClick={host === "add" ? handleCreate : handleEdit}
           >
-            Create task <Check />
+            {host === "add" ? `Create task` : "Save Changes"}<Check />
           </button>
           <button
             type="button"

@@ -3,13 +3,13 @@ import "./mainBoard.css";
 import { AppThemeContext, DataContext } from "../../App";
 import { AddCircle, Tune } from "@mui/icons-material";
 import AddTaskModal from "../AddTaskModal/AddTaskModal";
-import { coverImages } from "./coverImages";
 import TaskCard from "../TaskCard/TaskCard";
 import WarningModal from "../WarningModal/WarningModal";
+import empty from "../../assets/images/empty.webp"
 
 function MainBoard() {
   const { boards, dispatchBoards } = useContext(DataContext);
-  const{isDark} = useContext(AppThemeContext)
+  const { isDark } = useContext(AppThemeContext);
   const [optionsOpen, setOptions] = useState(false);
   const currentObj = boards?.boardsList.find(
     (obj) => obj.id === boards?.selectedBoard
@@ -61,6 +61,7 @@ function MainBoard() {
                     });
                     setOptions(false);
                   }}
+                  disabled={boards?.boardsList?.length === 0}
                 >
                   Delete Board
                 </button>
@@ -81,6 +82,8 @@ function MainBoard() {
                     });
                     setOptions(false);
                   }}
+                  disabled={boards?.boardsList?.length === 0}
+
                 >
                   Edit Board
                 </button>
@@ -119,7 +122,10 @@ function MainBoard() {
                   />
                 ))
               ) : (
-                <p className="empty-parag">No tasks available</p>
+                <div className="empty-wrapper">
+                  <img src={empty} alt="" className="empty-img" />
+                  <p className="empty-parag">No tasks available</p>
+                </div>
               )}
             </article>
           </section>

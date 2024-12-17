@@ -40,3 +40,27 @@ button{
   border: none;
   cursor: pointer;
 }
+@media (width <= 455px) {
+  .modal-wrapper {
+    padding: 0!important;
+  }
+  .modal-container {
+    border-radius: 0 !important;
+    min-height: 100vh !important;
+    padding: 2rem 1rem !important;
+  }
+  .columns-wrapper,.warning-modal-btns-wrapper {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    
+  }
+  .column-btn {
+    width: 300px !important;
+  }
+  .warning-modal-btn{
+    max-width: 100%!important;
+    width: 100% !important;
+
+
+  }
+}

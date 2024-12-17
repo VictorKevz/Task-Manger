@@ -2,7 +2,7 @@
 .modal-container.warning{
 max-width: 500px;
 width: 100%;
-min-height: 250px;
+min-height: fit-content;
 align-items: center;
 color: #fff;
 text-align: center;
