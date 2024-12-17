@@ -190,7 +190,13 @@ function App() {
                   {
                     taskId: uuid(),
                     taskName: "Task 1",
-                    taskDescription: "The description of task 1",
+                    taskDescription: "The description of task 1. Click options ⠇ to edit or delete tasks",
+                    tags: ["thesis", "school", "academic"],
+                  },
+                  {
+                    taskId: uuid(),
+                    taskName: "Task 2",
+                    taskDescription: "Click 'Add new board' to add a new board. ",
                     tags: ["thesis", "school", "academic"],
                   },
                 ],
@@ -204,7 +210,14 @@ function App() {
               {
                 columnId: uuid(),
                 columnTitle: "Completed",
-                tasks: [],
+                tasks: [
+                  {
+                    taskId: uuid(),
+                    taskName: "Task 3",
+                    taskDescription: "Your completed tasks will appear here.",
+                    tags: ["thesis", "school", "academic"],
+                  },
+                ],
                 tags: [],
               },
             ],

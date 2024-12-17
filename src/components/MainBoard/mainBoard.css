@@ -72,12 +72,18 @@
   scale: 1.1;
 transition: 0.3s ease-in-out;
 }
+/* 
+.
+.
+.
+BOARD BODY STYLES
+*/
 .board-container {
   max-width: 1440px;
   width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 4rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
   color: var(--cream);
   padding: 0 1.5rem 0 3rem;
   overflow-x: scroll;

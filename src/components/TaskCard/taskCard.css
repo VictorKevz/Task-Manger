@@ -40,7 +40,7 @@
 }
 .complete {
   text-decoration: line-through;
-  color: rgb(158, 156, 156) !important;
+  color: rgba(247, 243, 243, 0.949) !important;
 }
 .options-container {
   position: relative;
